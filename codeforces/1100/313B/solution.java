@@ -1,16 +1,25 @@
-import java.util.*;
-public class ABearAndBigBrother {
+import java.util.Scanner;
+ 
+/**
+ * BIlyaAndQueries
+ */
+public class BIlyaAndQueries {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        int a=sc.nextInt();
-        int b=sc.nextInt();
-        int years=0;
-        while(a <= b){
-            a *= 3;
-            b *= 2;
-            years++;
+        String s=sc.next();
+        int n=s.length();
+        int prefix[]=new int[n];
+        for(int i=1;i<n;i++){
+            prefix[i]=prefix[i-1];
+            if(s.charAt(i)==s.charAt(i-1)){
+                prefix[i]++;
+            }
         }
-    System.out.println(years);
-}
- 
+        int m=sc.nextInt();
+        for(int i=0;i<m;i++){
+            int l=sc.nextInt();
+            int r=sc.nextInt();
+            System.out.println(prefix[r-1]-prefix[l-1]);
+        }
+    }
 }
